@@ -1,0 +1,7 @@
+{
+  "name": "kbn_sankey_vis",
+  "version": "0.1.0",
+  "dependencies": {
+    "d3-plugins-sankey": "1.2.1"
+  }
+}
