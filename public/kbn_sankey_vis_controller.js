@@ -39,7 +39,7 @@ define(function (require) {
 
     var _buildVis = function (data) {
       var energy = data.slices;
-      div = d3.select(svgRoot)
+      div = d3.select(svgRoot);
       if (!energy.nodes.length) return;
 
       console.log($scope.vis);
