@@ -45,6 +45,11 @@ define(function (require) {
         notify.error('need more than one sub aggs');
       }
 
+      // reset these three variables, so that everything is fresh for refresh
+      nodes = {};
+      links = {};
+      lastNode = -1;
+    
       processEntry(firstAgg, metric, aggData, -1);
 
       var invertNodes = _.invert(nodes);
