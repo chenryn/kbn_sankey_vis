@@ -17,10 +17,20 @@ const packageName = pkg.name  + '-' + pkg.version;
 
 // relative location of Kibana install
 const pathToKibana = '../kibana';
-const buildDir = path.resolve(__dirname, 'build');
+const buildDir = 'build'; //path.resolve(__dirname, 'build');
 const targetDir = path.resolve(__dirname, 'target');
-const buildTarget = path.resolve(buildDir, pkg.name);
-const kibanaPluginDir = path.resolve(__dirname, pathToKibana, 'installedPlugins', pkg.name);
+const buildTarget = 'build/kbn_sankey_vis'; //path.resolve(buildDir, pkg.name);
+const kibanaPluginDir = '../../../installedPlugins'; //path.resolve(__dirname, pathToKibana, 'installedPlugins', pkg.name);
+
+/*
+// Enable for debugging... DUH!
+
+console.log("Package Name: " + packageName);
+console.log("Build Dir: " + buildDir);
+console.log("Target Dir: "+ targetDir);
+console.log("Build Target: " + buildTarget);
+console.log("Plugin Dir: " + kibanaPluginDir);
+*/
 
 const include = [
   'package.json',
@@ -45,7 +55,8 @@ function syncPluginTo(dest, done) {
   mkdirp(dest, function (err) {
     if (err) return done(err);
 
-    const source = path.resolve(__dirname) + '/';
+    // Related to bug in windows...
+    const source = '.' ;//__dirname +'/'; //path.resolve(__dirname) + '/';
     const rsync = new Rsync();
 
     rsync.source(source)
@@ -58,6 +69,8 @@ function syncPluginTo(dest, done) {
     .output(function (data) {
       process.stdout.write(data.toString('utf8'));
     });
+
+    console.log(rsync.command());
 
     rsync.execute(function (err) {
       if (err) {
