@@ -16,6 +16,21 @@ npm run build
 cp -R build/kbn_sankey_vis KIBANA_FOLDER_PATH/installedPlugins/
 ```
 
+** Note that in NTFS file systems, file paths that exceed 260 characters will fail with cp, you have to use ROBOCOPY:
+
+```
+robocopy /S build/kbn_sankey_vis KIBANA_FOLDER_PATH/installedPlugins/kbn_sankey_vis
+```
+
+** Also note that if npm run build fails, with a rsync.js error, it is likelly that you don't have RSYNC.EXE installed
+in your system, and also that you don't have it on your PATH environment variable.
+
+Install it from https://www.itefix.net/cwrsync and run:
+
+```
+set PATH=%PATH%;{rsync installation directory}\bin
+```
+
 # Uninstall
 
 ```
