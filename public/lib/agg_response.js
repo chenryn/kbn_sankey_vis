@@ -11,13 +11,12 @@ define(function (require) {
 
     function processEntry(aggConfig, metric, aggData, prevNode) {
       _.each(aggData.buckets, function (b) {
-        var bkey = aggConfig.fieldFormatter()(b.key);
-        if (isNaN(nodes[bkey])) {
-          nodes[bkey] = lastNode + 1;
+        if (isNaN(nodes[b.key])) {
+          nodes[b.key] = lastNode + 1;
           lastNode = _.max(_.values(nodes));
         }
         if (aggConfig._previous) {
-          var k = prevNode + 'sankeysplitchar' + nodes[bkey];
+          var k = prevNode + 'sankeysplitchar' + nodes[b.key];
           if (isNaN(links[k])) {
             links[k] = metric.getValue(b);
           } else {
@@ -25,7 +24,7 @@ define(function (require) {
           }
         }
         if (aggConfig._next) {
-          processEntry(aggConfig._next, metric, b[aggConfig._next.id], nodes[bkey]);
+          processEntry(aggConfig._next, metric, b[aggConfig._next.id], nodes[b.key]);
         }
       });
     }
@@ -50,7 +49,7 @@ define(function (require) {
       nodes = {};
       links = {};
       lastNode = -1;
-    
+
       processEntry(firstAgg, metric, aggData, -1);
 
       var invertNodes = _.invert(nodes);
