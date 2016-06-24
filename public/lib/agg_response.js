@@ -5,6 +5,7 @@ define(function (require) {
     var notify = new Notifier({
       location: 'Sankey chart response converter'
     });
+
     var nodes = {};
     var links = {};
     var lastNode = -1;
@@ -44,6 +45,10 @@ define(function (require) {
       if (!firstAgg._next) {
         notify.error('need more than one sub aggs');
       }
+
+      nodes = {};
+      links = {};
+      lastNode = -1;
 
       processEntry(firstAgg, metric, aggData, -1);
 

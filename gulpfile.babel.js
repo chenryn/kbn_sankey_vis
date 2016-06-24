@@ -56,7 +56,7 @@ function syncPluginTo(dest, done) {
     if (err) return done(err);
 
     // Related to bug in windows...
-    const source = '.' ;//__dirname +'/'; //path.resolve(__dirname) + '/';
+    const source = '.';
     const rsync = new Rsync();
 
     rsync.source(source)

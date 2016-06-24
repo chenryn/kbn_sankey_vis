@@ -26,26 +26,24 @@ define(function (require) {
       hierarchicalData: function (vis) {
         return Boolean(vis.params.showPartialRows || vis.params.showMetricsAtAllLevels);
       },
-      schemas: new Schemas([
-        {
-          group: 'metrics',
-          name: 'metric',
-          title: 'Split Size',
-          min: 1,
-          max: 1,
-          defaults: [
-            {type: 'count', schema: 'metric'}
-          ]
-        },
-        {
-          group: 'buckets',
-          name: 'segment',
-          title: 'Split Slices',
-          aggFilter: '!geohash_grid',
-          min: 0,
-          max: Infinity
-        }
-      ]),
+      schemas: new Schemas([{
+        group: 'metrics',
+        name: 'metric',
+        title: 'Split Size',
+        min: 1,
+        max: 1,
+        defaults: [{
+          type: 'count',
+          schema: 'metric'
+        }]
+      }, {
+        group: 'buckets',
+        name: 'segment',
+        title: 'Split Slices',
+        aggFilter: '!geohash_grid',
+        min: 0,
+        max: Infinity
+      }]),
       requiresSearch: true
     });
   }
