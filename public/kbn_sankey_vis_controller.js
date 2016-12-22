@@ -1,7 +1,7 @@
 import d3 from 'd3';
 import _ from 'lodash';
 import $ from 'jquery';
-import S from 'd3-plugins-sankey';
+import S from './lib/d3-plugins-sankey/sankey';
 import sankeyAggResponseProvider from './lib/agg_response';
 import uiModules from 'ui/modules';
 
