@@ -4,7 +4,7 @@ This is a sankey diagram visType plugin for Kibana 6.0.0-alpha1.
 
 This plugin was developped from <https://github.com/elastic/kibana/pull/4832>.
 
-![]()
+![](https://github.com/JuanCarniglia/kbn_sankey_vis/blob/master/releases/6.0.0-alpha1/Capture1.PNG)
 
 # Install
 
