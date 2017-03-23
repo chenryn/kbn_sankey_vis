@@ -14,6 +14,8 @@ cd kbn_sankey_vis
 npm install
 ```
 
+After that, change the ```package.json``` file version to the one you have installed.
+
 ** Note that in NTFS file systems, file paths that exceed 260 characters will fail with cp, you have to use ROBOCOPY:
 
 ```
