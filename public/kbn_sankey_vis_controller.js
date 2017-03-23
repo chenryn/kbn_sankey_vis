@@ -5,7 +5,7 @@ const module = uiModules.get('kibana/kbn_sankey_vis', ['kibana']);
 import d3 from 'd3';
 import _ from 'lodash';
 import $ from 'jquery';
-import S from 'd3-plugins-sankey';
+import S from 'd3-plugins-sankey-fixed';
 
 import AggResponseProvider from './lib/agg_response';
 
