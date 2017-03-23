@@ -1,22 +1,26 @@
-define(function (require) {
-  require('ui/agg_table');
-  require('ui/agg_table/agg_table_group');
 
-  require('plugins/kbn_sankey_vis/kbn_sankey_vis.less');
-  require('plugins/kbn_sankey_vis/kbn_sankey_vis_controller');
+  import 'ui/agg_table';
+  import 'ui/agg_table/agg_table_group';
+
+  import 'plugins/kbn_sankey_vis/kbn_sankey_vis.less';
+  import 'plugins/kbn_sankey_vis/kbn_sankey_vis_controller';
+
+  import TemplateVisTypeTemplateVisTypeProvider from 'ui/template_vis_type/template_vis_type';
+  import VisSchemasProvider from 'ui/vis/schemas';
+  import kbnSankeyVisTemplate from 'plugins/kbn_sankey_vis/kbn_sankey_vis.html';
 
   require('ui/registry/vis_types').register(KbnSankeyVisProvider);
 
   function KbnSankeyVisProvider(Private) {
-    var TemplateVisType = Private(require('ui/template_vis_type/TemplateVisType'));
-    var Schemas = Private(require('ui/Vis/Schemas'));
+    let TemplateVisType = Private(TemplateVisTypeTemplateVisTypeProvider);
+    let Schemas = Private(VisSchemasProvider);
 
     return new TemplateVisType({
       name: 'kbn_sankey',
       title: 'Sankey Diagram',
       icon: 'fa-random',
       description: 'Sankey charts are ideal for displaying the material, energy and cost flows.',
-      template: require('plugins/kbn_sankey_vis/kbn_sankey_vis.html'),
+      template: kbnSankeyVisTemplate,
       params: {
         defaults: {
           showMetricsAtAllLevels: false
@@ -47,7 +51,3 @@ define(function (require) {
       requiresSearch: true
     });
   }
-
-  // export the provider so that the visType can be required with Private()
-  return KbnSankeyVisProvider;
-});
